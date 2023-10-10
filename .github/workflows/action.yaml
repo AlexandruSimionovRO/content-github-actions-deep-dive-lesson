@@ -29,14 +29,18 @@ jobs:
         with:
           name: zipped-bundle
           path: ${{ github.sha }}.zip
+      - name: List current directory
+        run: |
+            ls .
+            /bin/sh ls .
+      - name: List one directory above
+        run: |
+            ls ../
+            /bin/sh ls ../
   upload:
     runs-on: ubuntu-latest
     needs: build
-    steps:
-      - name: List current directory
-        run: ls
-      - name: List one directory above
-        run: ls ../
+    steps:     
       - name: Download Artifact
         uses: aws-actions/configure-aws-credentials@v1
         with:
