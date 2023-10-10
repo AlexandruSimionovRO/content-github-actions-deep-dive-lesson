@@ -33,6 +33,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: List current directory
+        run: ls
+      - name: List one directory above
+        run: ls ../
       - name: Download Artifact
         uses: aws-actions/configure-aws-credentials@v1
         with:
